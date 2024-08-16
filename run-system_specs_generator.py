@@ -1,11 +1,23 @@
-# System Specifications Generator
-
 import psutil
 import platform
-import GPUtil
-import wmi
 import os
 from tkinter import filedialog, Tk
+import subprocess
+import re
+
+def get_gpu_info():
+    try:
+        import GPUtil
+        gpus = GPUtil.getGPUs()
+        return [{'Name': gpu.name, 'Memory': f"{gpu.memoryTotal} MB"} for gpu in gpus]
+    except ImportError:
+        # If GPUtil is not available, try using subprocess
+        try:
+            output = subprocess.check_output(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader,nounits"]).decode('utf-8')
+            gpus = [line.split(',') for line in output.strip().split('\n')]
+            return [{'Name': gpu[0].strip(), 'Memory': f"{float(gpu[1]):.0f} MB"} for gpu in gpus]
+        except:
+            return [{'Name': 'Unable to detect GPU', 'Memory': 'N/A'}]
 
 def get_system_specifications():
     specs = {}
@@ -26,12 +38,19 @@ def get_system_specifications():
     }
     
     # Motherboard
-    c = wmi.WMI()
-    board = c.Win32_BaseBoard()[0]
-    specs['Motherboard'] = {
-        'Manufacturer': board.Manufacturer,
-        'Model': board.Product,
-    }
+    if platform.system() == 'Windows':
+        try:
+            import wmi
+            c = wmi.WMI()
+            board = c.Win32_BaseBoard()[0]
+            specs['Motherboard'] = {
+                'Manufacturer': board.Manufacturer,
+                'Model': board.Product,
+            }
+        except:
+            specs['Motherboard'] = {'Manufacturer': 'Unknown', 'Model': 'Unknown'}
+    else:
+        specs['Motherboard'] = {'Manufacturer': 'Unknown', 'Model': 'Unknown'}
     
     # RAM
     specs['RAM'] = f"{psutil.virtual_memory().total / (1024**3):.2f} GB"
@@ -49,25 +68,34 @@ def get_system_specifications():
             })
     
     # Graphics Card
-    try:
-        gpus = GPUtil.getGPUs()
-        specs['Graphics Card'] = [{
-            'Name': gpu.name,
-            'Memory': f"{gpu.memoryTotal} MB",
-        } for gpu in gpus]
-    except:
-        specs['Graphics Card'] = [{'Name': 'Unable to detect GPU', 'Memory': 'N/A'}]
+    specs['Graphics Card'] = get_gpu_info()
     
     # Display
-    monitors = c.Win32_VideoController()
-    specs['Display'] = [{
-        'Name': monitor.Name,
-        'Resolution': f"{monitor.CurrentHorizontalResolution}x{monitor.CurrentVerticalResolution}",
-    } for monitor in monitors if monitor.CurrentHorizontalResolution]
+    if platform.system() == 'Windows':
+        try:
+            import wmi
+            c = wmi.WMI()
+            monitors = c.Win32_VideoController()
+            specs['Display'] = [{
+                'Name': monitor.Name,
+                'Resolution': f"{monitor.CurrentHorizontalResolution}x{monitor.CurrentVerticalResolution}",
+            } for monitor in monitors if monitor.CurrentHorizontalResolution]
+        except:
+            specs['Display'] = [{'Name': 'Unknown', 'Resolution': 'Unknown'}]
+    else:
+        specs['Display'] = [{'Name': 'Unknown', 'Resolution': 'Unknown'}]
     
     # Audio
-    sound_devices = c.Win32_SoundDevice()
-    specs['Audio'] = [device.Name for device in sound_devices]
+    if platform.system() == 'Windows':
+        try:
+            import wmi
+            c = wmi.WMI()
+            sound_devices = c.Win32_SoundDevice()
+            specs['Audio'] = [device.Name for device in sound_devices]
+        except:
+            specs['Audio'] = ['Unable to detect audio devices']
+    else:
+        specs['Audio'] = ['Unable to detect audio devices']
     
     return specs
 
