@@ -29,7 +29,7 @@ This project provides a Python script that gathers comprehensive information abo
   - Display specifications
   - Audio devices
 - Allows users to select specific sections to include in the report
-- Generates a well-formatted Markdown file
+- Generates a well-formatted Markdown file with timestamp in filename
 - Cross-platform compatibility (Windows, macOS, Linux)
 
 ## Requirements
@@ -44,8 +44,8 @@ This project provides a Python script that gathers comprehensive information abo
 
 1. Clone this repository:
    ```
-   git clone https://github.com/adibzailan/system_specs_generator.git
-   cd system_specs_generator
+   git clone https://github.com/adibzailan/system-specs-generator.git
+   cd system-specs-generator
    ```
 
 2. Install required packages:
@@ -61,7 +61,7 @@ Run the script from the command line:
 python run-system_specs_generator.py
 ```
 
-Follow the on-screen prompts to select which sections to include in your report and choose where to save the output file.
+Follow the on-screen prompts to select which sections to include in your report and choose where to save the output file. The generated file will have a timestamp in the format "YYYYMMDD_HHMM" appended to its name.
 
 ## Output Example
 
