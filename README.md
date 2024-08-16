@@ -44,8 +44,8 @@ This project provides a Python script that gathers comprehensive information abo
 
 1. Clone this repository:
    ```
-   git clone https://github.com/adibzailan/system-specs-generator.git
-   cd system-specs-generator
+   git clone https://github.com/adibzailan/system_specs_generator.git
+   cd system_specs_generator
    ```
 
 2. Install required packages:
