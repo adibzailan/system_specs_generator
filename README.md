@@ -58,7 +58,7 @@ This project provides a Python script that gathers comprehensive information abo
 Run the script from the command line:
 
 ```
-python system_specs_generator.py
+python run-system_specs_generator.py
 ```
 
 Follow the on-screen prompts to select which sections to include in your report and choose where to save the output file.
