@@ -4,6 +4,7 @@ import os
 from tkinter import filedialog, Tk
 import subprocess
 import re
+from datetime import datetime
 
 def get_gpu_info():
     try:
@@ -11,7 +12,6 @@ def get_gpu_info():
         gpus = GPUtil.getGPUs()
         return [{'Name': gpu.name, 'Memory': f"{gpu.memoryTotal} MB"} for gpu in gpus]
     except ImportError:
-        # If GPUtil is not available, try using subprocess
         try:
             output = subprocess.check_output(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader,nounits"]).decode('utf-8')
             gpus = [line.split(',') for line in output.strip().split('\n')]
@@ -139,17 +139,19 @@ def generate_markdown(specs, selected_sections=None):
 def save_markdown(content):
     root = Tk()
     root.withdraw()
+    current_time = datetime.now().strftime('%Y%m%d_%H%M')
+    file_name = f'pc_specifications_{current_time}.md'
     file_path = filedialog.asksaveasfilename(
-        defaultextension=".md",
-        filetypes=[("Markdown files", "*.md")],
-        initialfile="pc_specifications.md"
+        defaultextension='.md',
+        filetypes=[('Markdown files', '*.md')],
+        initialfile=file_name
     )
     if file_path:
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
-        print(f"Specifications saved to {file_path}")
+        print(f'Specifications saved to {file_path}')
     else:
-        print("Save operation cancelled.")
+        print('Save operation cancelled.')
 
 def main():
     print("Gathering system specifications...")
