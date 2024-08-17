@@ -1,4 +1,3 @@
-```markdown
 # ThinkPad X1 Carbon 7th Gen and Dock Summary
 
 ## Laptop Specifications
@@ -54,5 +53,3 @@
 - Set up dock with external monitors
 - Install necessary software for architecture studies
 - Configure Remote Desktop connection to more powerful PC
-
-```
