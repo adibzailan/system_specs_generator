@@ -1,4 +1,4 @@
-# ThinkPad X1 Carbon 7th Gen and Dock Summary
+# ThinkPad X1 Carbon 7th Gen and Dock Setup Summary
 
 ## Laptop Specifications
 - Model: Lenovo ThinkPad X1 Carbon 7th Gen (20QD0022SG)
@@ -20,36 +20,48 @@
 - Ports: Multiple USB 3.0, USB-C, HDMI, DisplayPort, Ethernet
 - Features: Supports multiple monitors, provides Ethernet connection
 
+## Thunderbolt Cable
+- Brand: Belkin
+- Model: CONNECT Thunderbolt 4 Cable
+- Length: 2m
+- Features: 
+  - Up to 40Gbps data transfer speed
+  - Up to 100W Power Delivery
+  - 8K video support
+  - USB4 compliant
+- Price: S$120
+
 ## Power Adapters
 - 230W power brick for the dock
 - 65W Lenovo power adapter for the laptop (when used without the dock)
 
-## Key Points
-- Total investment: Approximately S$600 (S$390 for laptop + S$188 for dock)
-- Significant upgrade in portability from current P50 (2.5kg vs ~1.1kg)
+## Setup Configuration
+- ThinkPad X1 Carbon connected to the Thunderbolt 3 Dock
+- Dock connected to two external monitors
+- Single cable connection from dock to laptop for power, data, and video
+
+## Software Status
+- Windows 11 update in progress
+- System reset completed
+
+## Total Investment
+- Laptop: S$390
+- Dock: S$188
+- Thunderbolt 4 Cable: S$120
+- Total: S$698
+
+## Key Benefits
+- Significant upgrade in portability from previous P50 (2.5kg vs ~1.1kg)
+- Powerful docking solution for multi-monitor setup
+- High-speed data transfer and charging with Thunderbolt 4
 - Suitable for 2 more years of university education (Architecture student)
 - Primarily for Remote Desktop use, connecting to a more powerful desktop
-- Compatible with Windows 11 upgrade (currently being installed)
 
-## Comparison to Current P50
-- P50 has 32GB RAM vs 16GB in X1 Carbon
-- X1 Carbon is significantly lighter and more portable
-- X1 Carbon has newer technology and likely better energy efficiency
-
-## Setup Plans
-- Use X1 Carbon with dock at home
-- Connect to 2 external monitors
-- Remote into headless desktop for resource-intensive tasks
-
-## Additional Items
-- Thunderbolt 3 cable for connecting laptop to dock
-- Carrying bag (Alphanes brand)
+## Next Steps
+- Complete Windows 11 update
+- Install necessary software for architecture studies
+- Configure Remote Desktop connection to more powerful PC
+- Test multi-monitor setup with architectural software
 
 ## Environmental Impact
 - Purchasing this used setup saves approximately 177kg of CO2 (laptop) and 14.3kg of CO2 (dock)
-
-## Next Steps
-- Complete Windows 11 installation
-- Set up dock with external monitors
-- Install necessary software for architecture studies
-- Configure Remote Desktop connection to more powerful PC
