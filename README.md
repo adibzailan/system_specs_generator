@@ -21,16 +21,18 @@ This project provides a Python script that gathers comprehensive information abo
 
 - Collects detailed system information including:
   - Overview (Model, OS)
-  - Processor details
+  - Processor details (including cores and threads)
   - Motherboard information
   - RAM capacity
-  - Storage devices and capacity
+  - Storage devices (including used and free space)
   - Graphics card(s) information
   - Display specifications
   - Audio devices
 - Allows users to select specific sections to include in the report
 - Generates a well-formatted Markdown file with timestamp in filename
 - Cross-platform compatibility (Windows, macOS, Linux)
+- Concurrent execution for faster data collection
+- Progress indicator during specification gathering
 
 ## Requirements
 
@@ -61,7 +63,7 @@ Run the script from the command line:
 python run-system_specs_generator.py
 ```
 
-Follow the on-screen prompts to select which sections to include in your report and choose where to save the output file. The generated file will have a timestamp in the format "YYYYMMDD_HHMM" appended to its name.
+The script will display a progress indicator while gathering system specifications. Then, follow the on-screen prompts to select which sections to include in your report and choose where to save the output file. The generated file will have a timestamp in the format "YYYYMMDD_HHMM" appended to its name.
 
 ## Output Example
 
@@ -75,31 +77,31 @@ The generated Markdown file will look similar to this:
 - **OS:** Microsoft Windows 10 Pro (10.0, Build 19045)
 
 ## Processor
-- **Model:** Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz 4/8
+- **Model:** Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
 - **Frequency:** 2.60 GHz
+- **Cores:** 4
+- **Threads:** 8
 
 ## Motherboard
 - **Manufacturer:** LENOVO
 - **Model:** 20EQCT01WW
 
 ## RAM
-- 32 GB
+- 32.00 GB
 
 ## Storage
-- **Device:** WDC WDS500G1B0A-00H9H0
-- **Total:** 465.8 GB
-- **Type:** Fixed hard disk media
+- **Device:** C:
+- **Total:** 465.76 GB
+- **Used:** 420.18 GB
+- **Free:** 45.58 GB
 
 ## Graphics Card
 - **Name:** NVIDIA Quadro M1000M
-- **Memory:** 4 GB
-- **Name:** Intel(R) HD Graphics 530
-- **Memory:** 1 GB
+- **Memory:** 4096 MB
 
 ## Display
-- **Name:** Lenovo LEN40BA
+- **Name:** Intel(R) HD Graphics 530
 - **Resolution:** 1920x1080
-- **Size:** 15.3 inch
 
 ## Audio
 - Realtek High Definition Audio
